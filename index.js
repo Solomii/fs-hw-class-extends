@@ -84,14 +84,14 @@ class Product {
     }
 
     buy(amountValue) {
-        if (
-            amountValue === "" ||
-            amountValue === null ||
-            amountValue <= 0 ||
-            Number.isNaN(amountValue)
-        ) {
-            return "error";
+        if (typeof value !== "number") {
+            throw new TypeError("amountValue must be number!");
         }
+
+        if (value < 0) {
+            throw new RangeError("amountValue can't be negative");
+        }
+
         if (this.quantity <= amountValue) {
             return null;
         }
@@ -177,11 +177,11 @@ try {
 }
 
 try {
-  const productOnePriceTypeofError = new Product("eggs", "dfd", "uah", 10);
-  console.log(productOnePriceTypeofError.getInformationAboutProduct());
-  console.log(productOnePriceTypeofError.buy(8));
+    const productOnePriceTypeofError = new Product("eggs", "dfd", "uah", 10);
+    console.log(productOnePriceTypeofError.getInformationAboutProduct());
+    console.log(productOnePriceTypeofError.buy(8));
 } catch (error) {
-  console.log(error);
+    console.log(error);
 }
 
 try {
@@ -201,11 +201,11 @@ try {
 }
 
 try {
-  const productOneTypeofErrorName = new Product(3, 8, "uah", 10);
-  console.log(productOneTypeofErrorName.getInformationAboutProduct());
-  console.log(productOneTypeofErrorName.buy(8));
+    const productOneTypeofErrorName = new Product(3, 8, "uah", 10);
+    console.log(productOneTypeofErrorName.getInformationAboutProduct());
+    console.log(productOneTypeofErrorName.buy(8));
 } catch (error) {
-  console.log(error);
+    console.log(error);
 }
 
 try {
@@ -217,11 +217,11 @@ try {
 }
 
 try {
-  const productOneTypeofErrorCurrency = new Product("eggs", 8, null, 10);
-  console.log(productOneTypeofErrorCurrency.getInformationAboutProduct());
-  console.log(productOneTypeofErrorCurrency.buy(8));
+    const productOneTypeofErrorCurrency = new Product("eggs", 8, null, 10);
+    console.log(productOneTypeofErrorCurrency.getInformationAboutProduct());
+    console.log(productOneTypeofErrorCurrency.buy(8));
 } catch (error) {
-  console.log(error);
+    console.log(error);
 }
 
 try {
